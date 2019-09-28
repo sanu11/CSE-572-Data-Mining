@@ -121,6 +121,7 @@ def getStatisticalFeatures(file_name):
     min_matrix, max_matrix = calculateWindowedMinMax(dataframe, window_size, window_slide)
     print("min_matrix ", min_matrix)
     print("max_matrix ", max_matrix)
+    return mean_matrix,std_matrix,min_matrix,max_matrix
 
 
 
