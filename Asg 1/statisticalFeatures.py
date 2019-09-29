@@ -113,8 +113,15 @@ def getStatisticalFeatures(file_name):
     window_slide = 6
 
     mean_matrix = calculateWindowedMean(dataframe, window_size, window_slide)
+    print("rows",len(mean_matrix))
+    print("cols", len(mean_matrix[0]))
+    print("mean matrix ",mean_matrix)
     std_matrix = calculateWindowedstd(dataframe, window_size, window_slide)
-    min_matrix, max_matrix = calculateWindowedMinMax(dataframe, window_size, window_size)
+    print("std_matrix ", std_matrix)
+    min_matrix, max_matrix = calculateWindowedMinMax(dataframe, window_size, window_slide)
+    print("min_matrix ", min_matrix)
+    print("max_matrix ", max_matrix)
+    return mean_matrix,std_matrix,min_matrix,max_matrix
 
 
 
