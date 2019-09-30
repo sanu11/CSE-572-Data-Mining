@@ -2,9 +2,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def velocity():
-    fl = pd.read_csv("CGMSeriesLunchPat1.csv")
-    dt = pd.read_csv("CGMDatenumLunchPat1.csv")
+    fl = pd.read_csv("DataSets/CGMSeriesLunchPat1.csv")
+    dt = pd.read_csv("Datasets/CGMDatenumLunchPat1.csv")
     c=0
+    df = pd.DataFrame(index=range(0,fl.shape[0]),columns=['velocity1','velocity2','velocity3'])
     final = [[0 for i in range(3)] for j in range(fl.shape[0])]
     for row in range(fl.shape[0]):
         tm = dt.loc[row]
@@ -24,5 +25,6 @@ def velocity():
             l= max(v)
             final[row][j] = l
             v.remove(l)
-    return (final)
-    
+
+    df = pd.DataFrame(final)
+    return (df)

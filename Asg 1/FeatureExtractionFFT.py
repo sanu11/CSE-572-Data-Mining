@@ -5,6 +5,7 @@ from sklearn.decomposition import PCA
 import pandas as pd
 from scipy.fftpack import fft, ifft
 import statisticalFeatures as statf
+import cgmvel as cgm
 # load dataset
 #dataframe1 = read_csv('CGMDatenumLunchPat1.csv',header=0, names=['cgmDatenum_1'])
 #print(series1.head(5))
@@ -54,8 +55,8 @@ for i in range(0,len(dataframe2)):
   freq1_ps = np.abs(yf)**2
   power.append(np.sum(freq1_ps))
   peaks.append(np.abs(yf[0:4]))
-  print("power =")
-  print(power)
+  #print("power =")
+  #print(power)
  # pyplot.clf()
   #pow1 = yf.*conj(yf)/(30);
   #sum = sum + pow1
@@ -77,17 +78,20 @@ for i in range(0,len(dataframe2)):
 #stdFrame = pd.DataFrame.from_dict(std)
 powerFrame = pd.DataFrame.from_dict(power)
 peaksFrame = pd.DataFrame.from_dict(peaks)
+#get statistical features
 mean_matrix,std_matrix,min_matrix,max_matrix = statf.getStatisticalFeatures('Datasets/CGMSeriesLunchPat1.csv')
 meanFrame = pd.DataFrame.from_dict(mean_matrix)
 stdFrame = pd.DataFrame.from_dict(std_matrix)
 minFrame = pd.DataFrame.from_dict(min_matrix)
 maxFrame = pd.DataFrame.from_dict(max_matrix)
 
+#get cgm veocity peaks
+cgmVelocityFrame = cgm.velocity()
 
 #pyplot.plot(range(0,33), power)
-print(len(listOfMeans))
-FinalFeatureFrame = pd.concat([peaksFrame,meanFrame,stdFrame,minFrame,maxFrame], axis = 1)
-print(FinalFeatureFrame)
+#print(len(listOfMeans))
+FinalFeatureFrame = pd.concat([powerFrame,peaksFrame,meanFrame,stdFrame,minFrame,maxFrame,cgmVelocityFrame], axis = 1)
+#print(FinalFeatureFrame.shape[1])
 
 FinalFeatureFrame.to_csv('FeatureMatrix.csv')
 #np.save('FeatureMatrix.csv',FinalFeatureFrame)

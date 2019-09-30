@@ -12,7 +12,7 @@ FinalFeatureFrame = read_csv('FeatureMatrix.csv',header=0)
 FinalFeatureFrame.drop(FinalFeatureFrame.columns[1], axis=1,inplace=True)
 print(len(FinalFeatureFrame.loc[0]))
 #perform PCA
-pca = PCA(n_components=6)
+pca = PCA(n_components=4)
 x_new = pca.fit_transform(FinalFeatureFrame)
 #create dataframe from pca components
 PCAframe = pd.DataFrame(x_new)
@@ -23,5 +23,5 @@ print(pca.explained_variance_ratio_)
 for i in pca.explained_variance_ratio_:
   print("PCA Components and their variance",i)
 
-pd.DataFrame(pca.components_,columns=FinalFeatureFrame.columns,index = ['PC-1','PC-2','3','4','5','6']).to_csv('FinalFeatures.csv',index=None)
-print(pd.DataFrame(pca.components_,columns=FinalFeatureFrame.columns,index = ['PC-1','PC-2','3','4','5','6']))
+pd.DataFrame(pca.components_,columns=FinalFeatureFrame.columns,index = ['PC-1','PC-2','3','4']).to_csv('FinalFeatures.csv',index=None)
+print(pd.DataFrame(pca.components_,columns=FinalFeatureFrame.columns,index = ['PC-1','PC-2','3','4']))
