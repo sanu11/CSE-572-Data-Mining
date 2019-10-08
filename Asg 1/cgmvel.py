@@ -17,7 +17,7 @@ def velocity(cgmSeries, dataenum):
             if i == 0:
                 v.append(0)
             else:
-                v.append((cgm[i]-cgm[i-1])/(tm[i]-tm[i-1]))
+                v.append(abs(cgm[i]-cgm[i-1])/abs(tm[i]-tm[i-1]))
         """plt.figure("CGM Velocity")
         plt.plot(dt.loc[row],v)
         plt.xlabel("Time Series")
