@@ -1,9 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def velocity():
-    fl = pd.read_csv("DataSets/CGMSeriesLunchPat1.csv")
-    dt = pd.read_csv("Datasets/CGMDatenumLunchPat1.csv")
+def velocity(cgmSeries, dataenum):
+    # fl = pd.read_csv("DataSets/CGMSeriesLunchPat1.csv")
+    # dt = pd.read_csv("Datasets/CGMDatenumLunchPat1.csv")
+    fl = cgmSeries
+    dt = dataenum
     c=0
     df = pd.DataFrame(index=range(0,fl.shape[0]),columns=['velocity1','velocity2','velocity3'])
     final = [[0 for i in range(3)] for j in range(fl.shape[0])]
