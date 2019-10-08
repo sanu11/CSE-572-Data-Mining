@@ -78,8 +78,8 @@ def calculateWindowedMinMax(dataframe, window_size, window_slide):
         st = 0
         end = st+window_size
         while end<=33:
-            if end>29:
-                window =  dataframe.iloc[i,st:30]
+            if end>30:
+                window =  dataframe.iloc[i,st:31]
                 #print("last window ",window)
                 minn = min(window)
                 maxx = max(window)

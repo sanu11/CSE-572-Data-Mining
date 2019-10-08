@@ -28,19 +28,19 @@ for i in range(0,len(dataframe2)):
   #k=6
   #p=0
   #print(dataframe2.loc[i,:])
-  list=dataframe2.iloc[i,0:30]
+  list=dataframe2.iloc[i,0:31]
   #print(list)
   #print(np.isnan(list))
  # list = list
-  y= fft(list)
+  yf= fft(list)
   N = 33
   # sample spacing
   T = 1.0 / 36.0
   x = np.linspace(0.0, N*T, N)
   #y = np.sin(50.0 * 2.0*np.pi*x) + 0.5*np.sin(80.0 * 2.0*np.pi*x)
-  yf = fft(y)
+  #yf = fft(y)
   xf = np.linspace(0.0, 1.0/(2.0*T), N/2)
-  sorted(list,reverse=True)
+  sorted(yf,reverse=True)
   #pyplot.plot(list)
   #pyplot.show()
   #pyplot.clear()
@@ -78,6 +78,11 @@ for i in range(0,len(dataframe2)):
 #stdFrame = pd.DataFrame.from_dict(std)
 powerFrame = pd.DataFrame.from_dict(power)
 peaksFrame = pd.DataFrame.from_dict(peaks)
+
+pyplot.scatter(range(0,33),(np.array(peaks))[:,0])
+pyplot.scatter(range(0,33),(np.array(peaks))[:,1])
+
+pyplot.show()
 #get statistical features
 mean_matrix,std_matrix,min_matrix,max_matrix = statf.getStatisticalFeatures('Datasets/CGMSeriesLunchPat1.csv')
 meanFrame = pd.DataFrame.from_dict(mean_matrix)
@@ -90,7 +95,7 @@ cgmVelocityFrame = cgm.velocity()
 
 #pyplot.plot(range(0,33), power)
 #print(len(listOfMeans))
-FinalFeatureFrame = pd.concat([powerFrame,peaksFrame,meanFrame,stdFrame,minFrame,maxFrame,cgmVelocityFrame], axis = 1)
+FinalFeatureFrame = pd.concat([peaksFrame,meanFrame,stdFrame,minFrame,maxFrame,cgmVelocityFrame], axis = 1)
 #print(FinalFeatureFrame.shape[1])
 
 FinalFeatureFrame.to_csv('FeatureMatrix.csv')
