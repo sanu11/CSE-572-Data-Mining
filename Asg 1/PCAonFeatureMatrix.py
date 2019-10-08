@@ -11,6 +11,7 @@ from scipy.fftpack import fft, ifft
 FinalFeatureFrame = read_csv('FeatureMatrix.csv',header=0)
 FinalFeatureFrame.drop(FinalFeatureFrame.columns[1], axis=1,inplace=True)
 print(len(FinalFeatureFrame.loc[0]))
+N= len(FinalFeatureFrame)
 #perform PCA
 pca = PCA()
 x_new = pca.fit_transform(FinalFeatureFrame)
@@ -25,21 +26,31 @@ for i in pca.explained_variance_ratio_:
 finalFeatureMatrix = np.transpose(pca.components_[0:5,0:27].dot(np.transpose(x_new)))
 
 print(finalFeatureMatrix)
-pyplot.scatter(range(0,33),np.array(FinalFeatureFrame)[0:33,0])
-pyplot.scatter(range(0,33),finalFeatureMatrix[0:33,0])
-
+#pyplot.scatter(range(0,N),np.array(FinalFeatureFrame)[0:N,0])
+pyplot.xlabel('Data')
+pyplot.ylabel('Feature 1')
+pyplot.plot(range(0,N),finalFeatureMatrix[0:N,0])
 pyplot.show()
 
-pyplot.scatter(range(0,33),finalFeatureMatrix[0:33,2])
+pyplot.xlabel('Data')
+pyplot.ylabel('Feature 2')
+pyplot.scatter(range(0,N),finalFeatureMatrix[0:N,1])
 pyplot.show()
 
-pyplot.scatter(range(0,33),finalFeatureMatrix[0:33,3])
+pyplot.xlabel('Data')
+pyplot.ylabel('Feature 3')
+pyplot.scatter(range(0,N),finalFeatureMatrix[0:N,2])
 pyplot.show()
 
-pyplot.scatter(range(0,33),finalFeatureMatrix[0:33,4])
+pyplot.xlabel('Data')
+pyplot.ylabel('Feature 4')
+pyplot.scatter(range(0,N),finalFeatureMatrix[0:N,3])
 pyplot.show()
 
-pyplot.scatter(range(0,33),finalFeatureMatrix[0:33,0])
+pyplot.xlabel('Data')
+pyplot.ylabel('Feature 5')
+pyplot.scatter(range(0,N),finalFeatureMatrix[0:N,4])
+
 
 pyplot.show()
 #pd.DataFrame(pca.components_,columns=FinalFeatureFrame.columns,index = ['PC-1','PC-2','3','4']).to_csv('FinalFeatures.csv',index=None)
