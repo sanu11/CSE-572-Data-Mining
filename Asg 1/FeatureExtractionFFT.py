@@ -9,7 +9,44 @@ import cgmvel as cgm
 # load dataset
 #dataframe1 = read_csv('CGMDatenumLunchPat1.csv',header=0, names=['cgmDatenum_1'])
 #print(series1.head(5))
-dataframe2 = read_csv('Datasets/CGMSeriesLunchPat1.csv', header=0, index_col=False)
+
+print("Get all Files\n")
+all_filenames = ['Datasets/CGMSeriesLunchPat1.csv_updated.csv','Datasets/CGMSeriesLunchPat2.csv_updated.csv','Datasets/CGMSeriesLunchPat3.csv_updated.csv','Datasets/CGMSeriesLunchPat4.csv_updated.csv','Datasets/CGMSeriesLunchPat5.csv_updated.csv']
+final_file = 'Datasets/CGMSeries_CombinedFile.csv'
+combined_csv = pd.concat([pd.read_csv(f) for f in all_filenames],sort=False)
+print("Combined all files\n")
+combined_csv.to_csv(final_file, index=False, encoding='utf-8-sig')
+print("Wrote all files to final file")
+
+#Plot all data points
+dataframe2 = read_csv(final_file, header=0, index_col=False)
+dataframe2 = dataframe2.iloc[:,:31]
+#Reversing the CGM Series
+dataframe2 = dataframe2.iloc[:,::-1]
+num_rows = len(dataframe2)
+num_cols = len(dataframe2.iloc[0])
+print("No. of rows in our total dataset = ",num_rows)
+print("No. of cols in our total dataset = ",num_cols)
+print("DataFrame is reversed")
+
+#Combine Time Series also
+all_datefilenames = ['Datasets/CGMDatenumLunchPat1.csv_updated.csv','Datasets/CGMDatenumLunchPat2.csv_updated.csv','Datasets/CGMDatenumLunchPat3.csv_updated.csv','Datasets/CGMDatenumLunchPat4.csv_updated.csv','Datasets/CGMDatenumLunchPat5.csv_updated.csv']
+final_date_file = 'Datasets/CGMDatenum_CombinedFile.csv'
+combined_date_csv = pd.concat([pd.read_csv(f) for f in all_datefilenames],sort=False)
+print("Combined all time series files\n")
+combined_date_csv.to_csv(final_date_file, index=False, encoding='utf-8-sig')
+print("Wrote all time series files to final file")
+
+dataframe_time = read_csv(final_file, header=0, index_col=False)
+dataframe_time = dataframe_time.iloc[:,:31]
+#Reversing the CGM Series
+dataframe_time = dataframe_time.iloc[:,::-1]
+num_rows = len(dataframe_time)
+num_cols = len(dataframe_time.iloc[0])
+print("No. of rows in our total time series dataset = ",num_rows)
+print("No. of cols in our total time series dataset = ",num_cols)
+print("DataFrame is reversed")
+
 #dataframe2.reindex(dataframe1)
 # display first few rows
 #print(dataframe2.head(5))
@@ -95,14 +132,14 @@ pyplot.scatter(range(0,N),(np.array(peaks))[:,3])
 
 pyplot.show()
 #get statistical features
-mean_matrix,std_matrix,min_matrix,max_matrix = statf.getStatisticalFeatures('Datasets/CGMSeriesLunchPat1.csv')
+mean_matrix,std_matrix,min_matrix,max_matrix = statf.getStatisticalFeatures(final_file)
 meanFrame = pd.DataFrame.from_dict(mean_matrix)
 stdFrame = pd.DataFrame.from_dict(std_matrix)
 minFrame = pd.DataFrame.from_dict(min_matrix)
 maxFrame = pd.DataFrame.from_dict(max_matrix)
 
 #get cgm veocity peaks
-cgmVelocityFrame = cgm.velocity()
+cgmVelocityFrame = cgm.velocity(dataframe2,dataframe_time)
 
 #pyplot.plot(range(0,N), power)
 #print(len(listOfMeans))
