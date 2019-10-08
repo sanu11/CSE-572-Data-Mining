@@ -22,7 +22,8 @@ PCAframe.to_csv('PCAData.csv', index = None)
 print(PCAframe)
 for i in pca.explained_variance_ratio_:
   print("PCA Components and their variance",i)
-finalFeatureMatrix = x_new.dot(np.transpose(pca.components_[0:5,0:27]))
+finalFeatureMatrix = np.transpose(pca.components_[0:5,0:27].dot(np.transpose(x_new)))
+
 print(finalFeatureMatrix)
 pyplot.scatter(range(0,33),np.array(FinalFeatureFrame)[0:33,0])
 pyplot.scatter(range(0,33),finalFeatureMatrix[0:33,0])

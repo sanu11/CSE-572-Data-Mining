@@ -21,6 +21,7 @@ std = []
 power =[]
 peaks = []
 rms=[]
+print("length of dataframe")
 for i in range(0,len(dataframe2)):
   #n=9
 
@@ -33,7 +34,7 @@ for i in range(0,len(dataframe2)):
   #print(np.isnan(list))
  # list = list
   yf= fft(list)
-  N = 33
+  N = len(dataframe2)
   # sample spacing
   T = 1.0 / 36.0
   x = np.linspace(0.0, N*T, N)
@@ -78,9 +79,19 @@ for i in range(0,len(dataframe2)):
 #stdFrame = pd.DataFrame.from_dict(std)
 powerFrame = pd.DataFrame.from_dict(power)
 peaksFrame = pd.DataFrame.from_dict(peaks)
+pyplot.xlabel('Data')
+pyplot.ylabel('FFT Peak')
+pyplot.scatter(range(0,N),(np.array(peaks))[:,0])
+pyplot.show()
 
-pyplot.scatter(range(0,33),(np.array(peaks))[:,0])
-pyplot.scatter(range(0,33),(np.array(peaks))[:,1])
+pyplot.scatter(range(0,N),(np.array(peaks))[:,1])
+pyplot.show()
+
+pyplot.scatter(range(0,N),(np.array(peaks))[:,2])
+pyplot.show()
+
+pyplot.scatter(range(0,N),(np.array(peaks))[:,3])
+
 
 pyplot.show()
 #get statistical features
@@ -93,7 +104,7 @@ maxFrame = pd.DataFrame.from_dict(max_matrix)
 #get cgm veocity peaks
 cgmVelocityFrame = cgm.velocity()
 
-#pyplot.plot(range(0,33), power)
+#pyplot.plot(range(0,N), power)
 #print(len(listOfMeans))
 FinalFeatureFrame = pd.concat([peaksFrame,meanFrame,stdFrame,minFrame,maxFrame,cgmVelocityFrame], axis = 1)
 #print(FinalFeatureFrame.shape[1])
