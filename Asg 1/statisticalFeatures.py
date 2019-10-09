@@ -175,7 +175,7 @@ def getStatisticalFeatures(file_name):
     # plotfeatures(std_matrix, "Std Deviation of sliding windows (window size=9)","stat_fig2")
     # plotfeatures(min_matrix, "Difference in Min Values of sliding windows","stat_fig3")
     # plotfeatures(max_matrix, "Difference in Max Values of sliding windows","stat_fig4")
-    # plotfeatures(diff_minmax, "Difference in Max Values of sliding windows","stat_fig5")
+    plotfeatures(diff_minmax, "Difference in Min-Max Values of sliding windows","stat_fig5")
 
     return mean_matrix,std_matrix,min_matrix,max_matrix,diff_minmax
 
