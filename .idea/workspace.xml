@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="17d84f4c-70a2-4e36-83c1-d3fdc7dfaac5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Asg 1/FeatureExtractionFFT.py" beforeDir="false" afterPath="$PROJECT_DIR$/Asg 1/FeatureExtractionFFT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Asg 1/cgmvel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Asg 1/cgmvel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asg 1/statisticalFeatures.py" beforeDir="false" afterPath="$PROJECT_DIR$/Asg 1/statisticalFeatures.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,34 +22,36 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="csv" value="6" />
+          <entry key="png" value="5" />
           <entry key="py" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="Image" value="5" />
           <entry key="PLAIN_TEXT" value="6" />
           <entry key="Python" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2132" />
+          <entry key="py" value="3300" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2132" />
+          <entry key="Python" value="3300" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Asg 1/FeatureExtractionFFT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="66" column="6" lean-forward="true" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+            <state relative-caret-position="238">
+              <caret line="91" column="13" lean-forward="true" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -61,7 +62,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Asg 1/cgmvel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="51">
               <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -73,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Asg 1/PCAonFeatureMatrix.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state>
+              <caret line="10" column="43" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="43" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -82,13 +83,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Asg 1/statisticalFeatures.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+            <state relative-caret-position="17">
+              <caret line="140" column="26" lean-forward="true" selection-start-line="140" selection-start-column="26" selection-end-line="140" selection-end-column="26" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
+                <marker date="1570580404118" expanded="true" signature="3454:4147" ph="..." />
               </folding>
             </state>
           </provider>
@@ -109,9 +111,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Asg 1/statisticalFeatures.py" />
         <option value="$PROJECT_DIR$/Asg 1/cgmvel.py" />
         <option value="$PROJECT_DIR$/Asg 1/FeatureExtractionFFT.py" />
+        <option value="$PROJECT_DIR$/Asg 1/statisticalFeatures.py" />
       </list>
     </option>
   </component>
@@ -137,12 +139,6 @@
               <item name="CSE-572-Data-Mining" type="b2602c69:ProjectViewProjectNode" />
               <item name="CSE-572-Data-Mining" type="462c0819:PsiDirectoryNode" />
               <item name="Asg 1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE-572-Data-Mining" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE-572-Data-Mining" type="462c0819:PsiDirectoryNode" />
-              <item name="Asg 1" type="462c0819:PsiDirectoryNode" />
-              <item name="DataSets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CSE-572-Data-Mining" type="b2602c69:ProjectViewProjectNode" />
@@ -176,11 +172,14 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.FeatureExtractionFFT">
+  <component name="RunManager" selected="Python.statisticalFeatures">
     <configuration name="FeatureExtractionFFT" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CSE-572-Data-Mining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="C:\Users\diksh\AppData\Local\Programs\Python\Python37\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Asg 1" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -220,9 +219,6 @@
       <module name="CSE-572-Data-Mining" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\Users\diksh\AppData\Local\Programs\Python\Python37\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Asg 1" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -243,8 +239,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.FeatureExtractionFFT" />
         <item itemvalue="Python.statisticalFeatures" />
+        <item itemvalue="Python.FeatureExtractionFFT" />
       </list>
     </recent_temporary>
   </component>
@@ -275,13 +271,13 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26041666" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26041666" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49925596" weight="0.3295082" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.13541667" side_tool="true" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="4" sideWeight="0.8645833" visible="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="Python Console" order="4" sideWeight="0.8645833" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Version Control" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -292,25 +288,28 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26041666" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49925596" weight="0.3295082" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.13541667" side_tool="true" visible="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="Message" order="2" />
+      <window_info anchor="bottom" id="Find" order="3" />
+      <window_info anchor="bottom" id="Python Console" order="4" sideWeight="0.8645833" visible="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="Version Control" order="5" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="8" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" weight="0.3295082" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Asg 1/statisticalFeatures.py</url>
-          <line>80</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Asg 1/statisticalFeatures.py</url>
-          <line>25</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/statfeatures.py">
@@ -354,20 +353,10 @@
         <state relative-caret-position="-983" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Asg 1/statisticalFeatures.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Asg 1/PCAonFeatureMatrix.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state>
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="43" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
@@ -379,7 +368,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Asg 1/cgmvel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="51">
           <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -389,10 +378,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Asg 1/FeatureExtractionFFT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="66" column="6" lean-forward="true" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+        <state relative-caret-position="238">
+          <caret line="91" column="13" lean-forward="true" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Asg 1/stat_fig1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Asg 1/stat_fig2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Asg 1/stat_fig3.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Asg 1/stat_fig4.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Asg 1/statisticalFeatures.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="140" column="26" lean-forward="true" selection-start-line="140" selection-start-column="26" selection-end-line="140" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+            <marker date="1570580404118" expanded="true" signature="3454:4147" ph="..." />
           </folding>
         </state>
       </provider>

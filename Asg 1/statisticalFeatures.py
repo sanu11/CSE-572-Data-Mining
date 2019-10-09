@@ -2,9 +2,10 @@ from pandas import read_csv
 from matplotlib import pyplot
 import numpy as np
 import pandas as pd
+from matplotlib import pyplot
 
 
-file_name = 'Datasets/CGMSeriesLunchPat1.csv'
+file_name = 'Datasets/CGMSeries_CombinedFile.csv'
 def calculateWindowedMean(dataframe, window_size, window_slide):
     mean_matrix = []
     for i in range(0, len(dataframe)):
@@ -102,13 +103,56 @@ def calculateWindowedMinMax(dataframe, window_size, window_slide):
     #print("rows",len(mean_matrix))
     #print("cols", len(mean_matrix[0]))
     #print(std_matrix)
-    return min_matrix, max_matrix
+    diff_min = []
+    for i in range(0,len(min_matrix)):
+        row_min = []
+        for j in range(1,len(min_matrix[0])):
+            row_min.append(min_matrix[i][j]-min_matrix[i][j-1])
+        diff_min.append(row_min)
+
+    diff_max = []
+    for i in range(0,len(max_matrix)):
+        row_max = []
+        for j in range(1,len(max_matrix[0])):
+            row_max.append(max_matrix[i][j]-max_matrix[i][j-1])
+        diff_max.append(row_max)
+
+    return diff_min, diff_max
+
+
+def plotfeatures(feature_matrix, subtitle, fname):
+
+    n_rows = len(feature_matrix)
+    n_cols = len(feature_matrix[0])
+    print("Rows and cols in feature matrix ",n_rows,n_cols)
+
+    colors = ['r','b','g','y','c']
+    for i in range(0,n_cols):
+        feature_values = []
+        for j in range(0,n_rows):
+            feature_values.append(feature_matrix[j][i])
+
+        #print(len(feature_values))
+        #pyplot.subplot(123+i)
+        pyplot.scatter(range(0,n_rows),feature_values, c =colors[i])
+
+    pyplot.ylabel('Feature Value')
+    pyplot.xlabel('Different Data sample')
+    pyplot.legend('12345')
+    pyplot.suptitle("Scatterplot for Statistical Features")
+    pyplot.title(subtitle)
+    pyplot.show()
+    pyplot.savefig(fname)
+
+
+
 
 
 def getStatisticalFeatures(file_name):
     dataframe = read_csv(file_name, header=0, index_col=False)
-    print(dataframe)
 
+    dataframe = dataframe.iloc[:,:31]
+    print(dataframe)
     window_size = 9
     window_slide = 6
 
@@ -121,6 +165,12 @@ def getStatisticalFeatures(file_name):
     min_matrix, max_matrix = calculateWindowedMinMax(dataframe, window_size, window_slide)
     print("min_matrix ", min_matrix)
     print("max_matrix ", max_matrix)
+
+    # plotfeatures(mean_matrix, "Mean of of sliding windows (window size=9)","stat_fig1")
+    # plotfeatures(std_matrix, "Std Deviation of sliding windows (window size=9)","stat_fig2")
+    # plotfeatures(min_matrix, "Difference in Min Values of sliding windows","stat_fig3")
+    plotfeatures(max_matrix, "Difference in Max Values of sliding windows","stat_fig4")
+
     return mean_matrix,std_matrix,min_matrix,max_matrix
 
 
