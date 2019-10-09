@@ -84,24 +84,28 @@ peaksFrame = pd.DataFrame.from_dict(peaks)
 pyplot.xlabel('Data')
 pyplot.ylabel('FFT Peak1')
 pyplot.scatter(range(0,N),(np.array(peaks))[:,0])
+pyplot.savefig('Plots/Plots_fft/PCA_fft_peak1')
 pyplot.show()
 
 pyplot.xlabel('Data')
 pyplot.ylabel('FFT Peak2')
 pyplot.scatter(range(0,N),(np.array(peaks))[:,1])
+pyplot.savefig('Plots/Plots_fft/PCA_fft_peak2')
 pyplot.show()
 
 pyplot.xlabel('Data')
 pyplot.ylabel('FFT Peak3')
 pyplot.scatter(range(0,N),(np.array(peaks))[:,2])
+pyplot.savefig('Plots/Plots_fft/PCA_fft_peak3')
 pyplot.show()
 
 pyplot.xlabel('Data')
 pyplot.ylabel('FFT Peak4')
 pyplot.scatter(range(0,N),(np.array(peaks))[:,3])
-
-
+pyplot.savefig('Plots/Plots_fft/PCA_fft_peak4')
 pyplot.show()
+
+
 #get statistical features
 mean_matrix,std_matrix,min_matrix,max_matrix = statf.getStatisticalFeatures(final_file)
 meanFrame = pd.DataFrame.from_dict(mean_matrix)
