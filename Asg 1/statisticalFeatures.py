@@ -137,7 +137,7 @@ def plotfeatures(feature_matrix, subtitle, fname):
         for j in range(0,n_rows):
             feature_values.append(feature_matrix[j][i])
 
-        #print(len(feature_values))
+        print(len(feature_values))
         #pyplot.subplot(123+i)
         pyplot.scatter(range(0,n_rows),feature_values, c ='b')
 
