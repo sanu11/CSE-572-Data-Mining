@@ -72,9 +72,11 @@ def calculateWindowedstd(dataframe, window_size, window_slide):
 def calculateWindowedMinMax(dataframe, window_size, window_slide):
     min_matrix = []
     max_matrix = []
+    diff_minmax = []
     for i in range(0, len(dataframe)):
         row_min = []
         row_max = []
+        row_diff = []
 
         st = 0
         end = st+window_size
@@ -86,6 +88,7 @@ def calculateWindowedMinMax(dataframe, window_size, window_slide):
                 maxx = max(window)
                 row_min.append(minn)
                 row_max.append(maxx)
+                row_diff.append(maxx-minn)
                 break
             #print("st end",st,end)
             window = dataframe.iloc[i,st:end]
@@ -94,11 +97,13 @@ def calculateWindowedMinMax(dataframe, window_size, window_slide):
             maxx = max(window)
             row_min.append(minn)
             row_max.append(maxx)
+            row_diff.append(maxx - minn)
             st = st + window_slide
             end = st + window_size
 
         min_matrix.append(row_min)
         max_matrix.append(row_max)
+        diff_minmax.append(row_diff)
 
     #print("rows",len(mean_matrix))
     #print("cols", len(mean_matrix[0]))
@@ -117,7 +122,7 @@ def calculateWindowedMinMax(dataframe, window_size, window_slide):
             row_max.append(max_matrix[i][j]-max_matrix[i][j-1])
         diff_max.append(row_max)
 
-    return diff_min, diff_max
+    return diff_min, diff_max,diff_minmax
 
 
 def plotfeatures(feature_matrix, subtitle, fname):
@@ -134,15 +139,15 @@ def plotfeatures(feature_matrix, subtitle, fname):
 
         #print(len(feature_values))
         #pyplot.subplot(123+i)
-        pyplot.scatter(range(0,n_rows),feature_values, c =colors[i])
+        pyplot.scatter(range(0,n_rows),feature_values, c ='b')
 
-    pyplot.ylabel('Feature Value')
-    pyplot.xlabel('Different Data sample')
-    pyplot.legend('12345')
-    pyplot.suptitle("Scatterplot for Statistical Features")
-    pyplot.title(subtitle)
-    pyplot.show()
-    pyplot.savefig(fname)
+        pyplot.ylabel('Feature Value')
+        pyplot.xlabel('Different Data sample')
+        #pyplot.legend('12345')
+        pyplot.suptitle("Scatterplot for Statistical Features")
+        pyplot.title(subtitle+" window "+str(i))
+        pyplot.show()
+        pyplot.savefig(fname+"_"+str(i))
 
 
 
@@ -162,16 +167,17 @@ def getStatisticalFeatures(file_name):
     print("mean matrix ",mean_matrix)
     std_matrix = calculateWindowedstd(dataframe, window_size, window_slide)
     print("std_matrix ", std_matrix)
-    min_matrix, max_matrix = calculateWindowedMinMax(dataframe, window_size, window_slide)
+    min_matrix, max_matrix, diff_minmax = calculateWindowedMinMax(dataframe, window_size, window_slide)
     print("min_matrix ", min_matrix)
     print("max_matrix ", max_matrix)
 
     # plotfeatures(mean_matrix, "Mean of of sliding windows (window size=9)","stat_fig1")
     # plotfeatures(std_matrix, "Std Deviation of sliding windows (window size=9)","stat_fig2")
     # plotfeatures(min_matrix, "Difference in Min Values of sliding windows","stat_fig3")
-    plotfeatures(max_matrix, "Difference in Max Values of sliding windows","stat_fig4")
+    # plotfeatures(max_matrix, "Difference in Max Values of sliding windows","stat_fig4")
+    # plotfeatures(diff_minmax, "Difference in Max Values of sliding windows","stat_fig5")
 
-    return mean_matrix,std_matrix,min_matrix,max_matrix
+    return mean_matrix,std_matrix,min_matrix,max_matrix,diff_minmax
 
 
 

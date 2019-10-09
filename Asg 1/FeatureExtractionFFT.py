@@ -107,18 +107,19 @@ pyplot.show()
 
 
 #get statistical features
-mean_matrix,std_matrix,min_matrix,max_matrix = statf.getStatisticalFeatures(final_file)
+mean_matrix,std_matrix,min_matrix,max_matrix,diff_minmax = statf.getStatisticalFeatures(final_file)
 meanFrame = pd.DataFrame.from_dict(mean_matrix)
 stdFrame = pd.DataFrame.from_dict(std_matrix)
 minFrame = pd.DataFrame.from_dict(min_matrix)
 maxFrame = pd.DataFrame.from_dict(max_matrix)
+diffminmaxFrame = pd.DataFrame.from_dict(diff_minmax)
 
 #get cgm veocity peaks
 cgmVelocityFrame = cgm.velocity(dataframe2,dataframe_time)
 
 #pyplot.plot(range(0,N), power)
 #print(len(listOfMeans))
-FinalFeatureFrame = pd.concat([peaksFrame,meanFrame,stdFrame,minFrame,maxFrame,cgmVelocityFrame], axis = 1)
+FinalFeatureFrame = pd.concat([peaksFrame,meanFrame,stdFrame,minFrame,maxFrame,diffminmaxFrame,cgmVelocityFrame], axis = 1)
 #print(FinalFeatureFrame.shape[1])
 
 FinalFeatureFrame.to_csv('FeatureMatrix.csv')
