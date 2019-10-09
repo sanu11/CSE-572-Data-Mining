@@ -26,6 +26,6 @@ def psd(cgmSeries):
         plt.xlabel("Data")
         plt.ylabel("Power Spectral Density "+str(i+1))
         plt.title("Power Spectral Density")
-        plt.savefig('Plots/Plots_Cgm/PCA_cgm'+str(i+1))
+        plt.savefig('Plots/Plots_psd/PCA_psd'+str(i+1))
         plt.show()
     return df
