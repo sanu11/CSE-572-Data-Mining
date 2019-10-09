@@ -6,6 +6,7 @@ import pandas as pd
 from scipy.fftpack import fft, ifft
 import statisticalFeatures as statf
 import cgmvel as cgm
+import psd_feature as psd
 # load dataset
 #dataframe1 = read_csv('CGMDatenumLunchPat1.csv',header=0, names=['cgmDatenum_1'])
 #print(series1.head(5))
@@ -116,11 +117,12 @@ diffminmaxFrame = pd.DataFrame.from_dict(diff_minmax)
 
 #get cgm veocity peaks
 cgmVelocityFrame = cgm.velocity(dataframe2,dataframe_time)
-
+psdFrame = psd.psd(dataframe2)
+print(psdFrame)
 #pyplot.plot(range(0,N), power)
 #print(len(listOfMeans))
-FinalFeatureFrame = pd.concat([peaksFrame,meanFrame,stdFrame,minFrame,maxFrame,diffminmaxFrame,cgmVelocityFrame], axis = 1)
-#print(FinalFeatureFrame.shape[1])
+FinalFeatureFrame = pd.concat([peaksFrame,meanFrame,stdFrame,minFrame,maxFrame,diffminmaxFrame,cgmVelocityFrame,psdFrame], axis = 1)
+print(FinalFeatureFrame.shape[1])
 
 FinalFeatureFrame.to_csv('FeatureMatrix.csv')
 #np.save('FeatureMatrix.csv',FinalFeatureFrame)
