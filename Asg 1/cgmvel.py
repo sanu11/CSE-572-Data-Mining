@@ -28,5 +28,11 @@ def velocity(cgmSeries, dataenum):
             final[row][j] = l
             v.remove(l)
 
+    x = list(zip(*final))[0]
+    l = list(range(1,fl.shape[0]+1))
+    plt.scatter(list(zip(*final))[0],l)
+    plt.xlabel("x")
+    plt.title("CGM velocity")
+    plt.show()
     df = pd.DataFrame(final)
     return (df)
