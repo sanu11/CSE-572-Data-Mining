@@ -1,3 +1,4 @@
+
 from pandas import read_csv
 from matplotlib import pyplot
 import numpy as np
@@ -22,39 +23,55 @@ top5Eigen = np.array(pca.components_)[0:5][0:len(pca.components_)]
 
 #transpose to get the eigen vectors in columns
 top5EigenTranspose = np.transpose(top5Eigen)
-print(len(top5EigenTranspose))
+#print(len(top5EigenTranspose))
 
 #calculate the final feature matrix by multiplying
 finalFeatureMatrix = FinalFeatureFrame.dot(top5EigenTranspose)
-print(finalFeatureMatrix)
+#print(finalFeatureMatrix)
 #pyplot.scatter(range(0,N),np.array(FinalFeatureFrame)[0:N,0])
 pyplot.xlabel('Data')
 pyplot.ylabel('PCA Feature 1')
 pyplot.scatter(range(0,N),finalFeatureMatrix[0:N][0])
 pyplot.savefig('Plots/Plots_after_PCA/PCA_Feature1.png')
+<<<<<<< HEAD
 pyplot.show()
 pyplot.close()
+=======
+#pyplot.show()
+>>>>>>> b4efaf6e10fc76287b68b2e6827a7e79fe8d0e0b
 
 pyplot.xlabel('Data')
 pyplot.ylabel('PCA Feature 2')
 pyplot.scatter(range(0,N),finalFeatureMatrix[0:N][1])
 pyplot.savefig('Plots/Plots_after_PCA/PCA_Feature2.png')
+<<<<<<< HEAD
 pyplot.show()
 pyplot.close()
+=======
+#pyplot.show()
+>>>>>>> b4efaf6e10fc76287b68b2e6827a7e79fe8d0e0b
 
 pyplot.xlabel('Data')
 pyplot.ylabel('PCA Feature 3')
 pyplot.scatter(range(0,N),finalFeatureMatrix[0:N][2])
 pyplot.savefig('Plots/Plots_after_PCA/PCA_Feature3.png')
+<<<<<<< HEAD
 pyplot.show()
 pyplot.close()
+=======
+#pyplot.show()
+>>>>>>> b4efaf6e10fc76287b68b2e6827a7e79fe8d0e0b
 
 pyplot.xlabel('Data')
 pyplot.ylabel('PCA Feature 4')
 pyplot.scatter(range(0,N),finalFeatureMatrix[0:N][3])
 pyplot.savefig('Plots/Plots_after_PCA/PCA_Feature4.png')
+<<<<<<< HEAD
 pyplot.show()
 pyplot.close()
+=======
+#pyplot.show()
+>>>>>>> b4efaf6e10fc76287b68b2e6827a7e79fe8d0e0b
 
 pyplot.xlabel('Data')
 pyplot.ylabel('PCA Feature 5')
@@ -62,4 +79,8 @@ pyplot.scatter(range(0,N),finalFeatureMatrix[0:N][4])
 pyplot.savefig('Plots/Plots_after_PCA/PCA_Feature5.png')
 pyplot.close()
 
-pyplot.show()
+#pyplot.show()
+
+pcaFeatureImp = pd.DataFrame(pca.components_[0:5],columns=range(0,len(pca.components_)),index = ['PC-1','PC-2','3','4','5'])
+pcaFeatureImp.to_csv('pcaFeatureImp.csv')
+print(pca.explained_variance_ratio_)
