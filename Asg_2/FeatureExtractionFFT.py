@@ -52,7 +52,7 @@ def feature_matrix_for_pca(concatenatedFile):
   print("DataFrame is reversed")
 
   dataframe2.plot()
-  pyplot.show()
+  #pyplot.show()
   listOfMeans=[]
   std = []
   power =[]
