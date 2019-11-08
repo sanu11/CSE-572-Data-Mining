@@ -7,6 +7,7 @@ import pandas as pd
 from scipy.fftpack import fft, ifft
 import FeatureExtractionFFT as feature_matrix
 from sklearn.model_selection import train_test_split
+from numpy import genfromtxt
 
 savetop5EigenTranspose=0
 
@@ -18,7 +19,7 @@ def get_feature_matrix_Final(filename):
     len_of_file= len(labels)
 
     final_labels = labels.iloc[0:len_of_file,30]
-    print(final_labels)
+    # print(final_labels)
 
     FinalFeatureFrame = feature_matrix.feature_matrix_for_pca(data_File)
     FinalFeatureFrame.drop(FinalFeatureFrame.columns[1], axis=1,inplace=True)
@@ -26,7 +27,7 @@ def get_feature_matrix_Final(filename):
 
     #perform PCA
     pca = PCA()
-    x_new = pca.fit_transform(FinalFeatureFrame)
+    x_new = pca.fit_transform(FinalFeatureFrame) 
     # print(len(x_new))
     #create dataframe from pca components
     PCAframe = pd.DataFrame(x_new)
@@ -36,8 +37,12 @@ def get_feature_matrix_Final(filename):
     top5Eigen = np.array(pca.components_)[0:5][0:len(pca.components_)]
     #transpose to get the eigen vectors in columns
     top5EigenTranspose = np.transpose(top5Eigen)
+    # outfile = TemporaryFile()
+    # np.save('outfile', top5EigenTranspose)
+
     #print(len(top5EigenTranspose))
     #savetop5EigenTranspose = top5EigenTranspose
+
     #calculate the final feature matrix by multiplying
     finalFeatureMatrix = FinalFeatureFrame.dot(top5EigenTranspose)
     pd.DataFrame(top5EigenTranspose).to_csv('Top5EigenVectors.csv')
@@ -78,7 +83,7 @@ def get_feature_matrix_Final(filename):
     #print(pcaFeatureImp.shape)
 
     final_matrix_for_models = pd.DataFrame(finalFeatureMatrix)
-    print(final_matrix_for_models.shape)
+    # print(final_matrix_for_models.shape)
     final_matrix_for_models = pd.concat([final_matrix_for_models,final_labels],axis=1)
 
     #final_matrix_for_models.concat(final_labels)
@@ -89,5 +94,9 @@ def get_feature_matrix_Final(filename):
     return x_train.iloc[:,0:5],x_train.iloc[:,5],x_test.iloc[:,0:5],x_test.iloc[:,5]
 
 def get_reduced_test_data(test_data):
-    #test_data = test_data.dot(top5EigenTranspose)
-    return pd.DataFrame(test_data)
+
+    top5EigenTranspose=genfromtxt('Top5EigenVectors.csv', delimiter=',')
+    top5EigenTranspose=top5EigenTranspose[1:]
+
+    test_data = test_data.dot(top5EigenTranspose)
+    return test_data
