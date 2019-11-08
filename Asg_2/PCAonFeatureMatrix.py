@@ -34,13 +34,13 @@ def get_feature_matrix_Final(filename):
     #PCAframe.to_csv('PCAData.csv', index = None)
     #get the top 5 eigen from pca
     top5Eigen = np.array(pca.components_)[0:5][0:len(pca.components_)]
-
     #transpose to get the eigen vectors in columns
     top5EigenTranspose = np.transpose(top5Eigen)
     #print(len(top5EigenTranspose))
-    savetop5EigenTranspose = top5EigenTranspose
+    #savetop5EigenTranspose = top5EigenTranspose
     #calculate the final feature matrix by multiplying
     finalFeatureMatrix = FinalFeatureFrame.dot(top5EigenTranspose)
+    pd.DataFrame(top5EigenTranspose).to_csv('Top5EigenVectors.csv')
     #print(finalFeatureMatrix)
     #pyplot.scatter(range(0,N),np.array(FinalFeatureFrame)[0:N,0])
     pyplot.xlabel('Data')
@@ -89,5 +89,5 @@ def get_feature_matrix_Final(filename):
     return x_train.iloc[:,0:5],x_train.iloc[:,5],x_test.iloc[:,0:5],x_test.iloc[:,5]
 
 def get_reduced_test_data(test_data):
-    test_data = test_data.dot(top5EigenTranspose)
+    #test_data = test_data.dot(top5EigenTranspose)
     return pd.DataFrame(test_data)
