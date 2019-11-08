@@ -20,8 +20,10 @@ n = len(test_data)
 # for i in range(0,n):
 test_data = np.delete(test_data,30,1)
 
+# print len(test_data)
 # get feature matrix
 test_data = feature.feature_matrix_for_pca(preprocessed_file)
+
 test_data.drop(test_data.columns[1], axis=1,inplace=True)
 
 
@@ -42,10 +44,8 @@ print test_Y
 print test_X
 
 # Test all models
-rf.random_forest_test(test_X, test_Y)
-nn_model.test_neural_network(test_X,test_Y)
-svm.test_svm(test_X,test_Y)
-
-
+# rf.random_forest_test(test_X, test_Y)
+# nn_model.test_neural_network(test_X,test_Y)
+svm.svm_test(test_X,test_Y)
 
 # 
