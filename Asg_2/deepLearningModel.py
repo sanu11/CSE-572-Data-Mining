@@ -46,8 +46,8 @@ def train_neural_network(train_features,train_labels):
     for train_index, test_index in kf.split(train_features):
         print("Train Index: ", train_index, "\n")
         print("Test Index: ", test_index)
-        X_train, X_test = train_features[train_index], train_labels[test_index]
-        Y_train, Y_test = train_labels[train_index], train_labels[test_index]
+        X_train, X_test = train_features.iloc[train_index], train_features.iloc[test_index]
+        Y_train, Y_test = train_labels.iloc[train_index], train_labels.iloc[test_index]
         nn_model.fit(X_train,Y_train, epochs=eps , batch_size=batch)
         kfold_accuracies.append(nn_model.evaluate(X_test, Y_test)[1])
 
@@ -56,7 +56,7 @@ def train_neural_network(train_features,train_labels):
     # loss, accuracy = nn_model.evaluate(train_features, train_labels)
     # print("Accuracy: ", accuracy," Loss",loss)
     print("Accuracies: ",kfold_accuracies)
-    print("Mean Accuracy: ", kfold_accuracies.mean())
+    print("Mean Accuracy: ", sum(kfold_accuracies)/len(kfold_accuracies))
 
     nn_model.save('nn_model.h5')
 
@@ -65,7 +65,8 @@ def test_neural_network(test_features, test_labels):
     nn_model = load_model('nn_model.h5')
     predictions = nn_model.predict_classes(test_features)
     predictions = (predictions > 0.5)
-    print("Neural Network Accuracy for test Data =  ",accuracy_score(test_labels, predictions))
+    print("\n\n***********Neural Network Output******************")
+    print("\n**************************************************")
     print("Neural Network accuracy for test Data =  ", accuracy_score(test_labels, predictions))
     print("Neural Network precision for test Data =  ", precision_score(test_labels, predictions))
     print("Neural Network recall for test Data =  ", recall_score(test_labels, predictions))
