@@ -5,15 +5,27 @@ from sklearn.metrics import roc_auc_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
+from sklearn.model_selection import KFold
+from sklearn.model_selection import cross_val_score
 
 import pickle
 import numpy as np
 RSEED = 50
 def random_forest_train(train_features,train_labels):
+    print("Starting RandomForest Training Model")
     # Instantiate model with 1000 decision trees
+    # Using K-Fold to get Samples
     rf = RandomForestClassifier(n_estimators=100)
-    # Train the model on training data
-    rf.fit(train_features, train_labels)
+    kfold_accuracies = []
+    kf = KFold(n_splits=4, shuffle=True, random_state=42)
+    for train_index, test_index in kf.split(train_features):
+        X_train, X_test = train_features.iloc[train_index], train_features.iloc[test_index]
+        Y_train, Y_test = train_labels.iloc[train_index], train_labels.iloc[test_index]
+        # Train the model on training data
+        rf.fit(X_train,Y_train)
+        kfold_accuracies.append(accuracy_score(rf.predict(X_test), Y_test))
+    print("Accuracies K Fold: ",kfold_accuracies)
+    print("Mean Accuracy: ", sum(kfold_accuracies)/len(kfold_accuracies))
     pickle.dump(rf,open('rf_model.sav','wb'))
     # Use the forest's predict method on the test data
 
@@ -21,7 +33,8 @@ def random_forest_test(test_features,test_labels):
     rf = pickle.load(open('rf_model.sav', 'rb'))
 
     predictions = rf.predict(test_features)
-
+    print("\n\n***********Random Forest Output******************")
+    print("\n**************************************************")
     print("Random Forest accuracy = ",accuracy_score(test_labels,predictions))
     print("Random Forest precision = ",precision_score(test_labels,predictions))
     print("Random Forest recall = ",recall_score(test_labels,predictions))
