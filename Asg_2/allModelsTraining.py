@@ -12,6 +12,7 @@ test_X, test_Y,train_X,train_Y = pcafeature.get_feature_matrix_Final('Data/conca
 # print("Length of test Set ", len(test_X),len(test_Y))
 
 # print(train_X.iloc[0], train_Y.iloc[0])
+print test_X,test_Y
 rf.random_forest_train(train_X,train_Y)
 rf.random_forest_test(test_X, test_Y)
 

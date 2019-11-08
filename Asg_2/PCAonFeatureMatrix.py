@@ -97,6 +97,7 @@ def get_reduced_test_data(test_data):
 
     top5EigenTranspose=genfromtxt('Top5EigenVectors.csv', delimiter=',')
     top5EigenTranspose=top5EigenTranspose[1:]
+    top5EigenTranspose =top5EigenTranspose[:,1:]
 
     test_data = test_data.dot(top5EigenTranspose)
     return test_data
