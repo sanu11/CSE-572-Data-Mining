@@ -14,9 +14,7 @@ from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
 #from sklearn.model_selection import cross_val_score
 
-def decisiontest(data):
-    train=data.iloc[:,0:5]
-    label = data.iloc[:,5]
+def decisiontest(train, label):
     dt = DecisionTreeClassifier(random_state = 0)
     kf = KFold(n_splits=6, shuffle = True)
     ascore=[]
@@ -66,10 +64,8 @@ def dt_test_one(test_data):
     print("Predicted class:", predictions)
     return predictions
 
-#train_X,train_Y,test_X, test_Y = 
-#data = pd.read_csv("final_matrix_for_models.csv") 
-data = pcafeature.get_feature_matrix_Final('Asg_2/Data/concatenatedData.csv')
-decisiontest(data)
-#decisiontrain(test_X,test_Y)
+#data = pcafeature.get_feature_matrix_Final('Asg_2/Data/concatenatedData.csv')
+#decisiontest(data)
+
 
 
