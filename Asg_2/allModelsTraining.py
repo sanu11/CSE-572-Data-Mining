@@ -3,7 +3,6 @@ import randomforest as rf
 import deepLearningModel as nn_model
 
 test_X, test_Y,train_X,train_Y = pcafeature.get_feature_matrix_Final('Data/concatenatedData.csv')
-
 #1.Random Forest
 #accuracy, precision, recall, F1score calculation for Random Forest
 #accuracy, precision, recall, F1score =

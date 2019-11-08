@@ -58,7 +58,7 @@ def feature_matrix_for_pca(concatenatedFile):
   power =[]
   peaks = []
   rms=[]
-  print("length of dataframe")
+  #print("length of dataframe")
   for i in range(0,len(dataframe2)):
 
     list=dataframe2.iloc[i,0:31]
@@ -72,7 +72,7 @@ def feature_matrix_for_pca(concatenatedFile):
     xf = np.linspace(0.0, 1.0/(2.0*T), N/2)
     sorted(yf,reverse=True)
 
-    print("now fft")
+    #print("now fft")
 
     freq1_ps = np.abs(yf)**2
     power.append(np.sum(freq1_ps))
@@ -125,7 +125,7 @@ def feature_matrix_for_pca(concatenatedFile):
   #pyplot.plot(range(0,N), power)
   #print(len(listOfMeans))
   FinalFeatureFrame = pd.concat([peaksFrame,meanFrame,stdFrame,minFrame,maxFrame,diffminmaxFrame,cgmVelocityFrame,psdFrame], axis = 1)
-  print(FinalFeatureFrame.shape[1])
+  #print(FinalFeatureFrame.shape[1])
 
   #FinalFeatureFrame.to_csv('FeatureMatrix.csv')
   return FinalFeatureFrame
