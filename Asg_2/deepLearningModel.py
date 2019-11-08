@@ -15,7 +15,7 @@ def build_network():
 
     nn_model = Sequential()
     input_size = 5
-    nodes_layer1 = 15
+    nodes_layer1 = 8
     nodes_layer2 = 15
     nodes_layer3 = 1
 
@@ -35,7 +35,7 @@ def train_neural_network(train_features,train_labels):
     print("Len of training set:",len(train_features))
 
     # train the model
-    eps = 144
+    eps = 300
     batch = 12
     nn_model = build_network()
     # nn_model = KerasClassifier(build_fn=build_network, batch_size=batch, nb_epoch=eps)
