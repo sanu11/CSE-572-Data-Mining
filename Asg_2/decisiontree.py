@@ -14,7 +14,8 @@ from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
 #from sklearn.model_selection import cross_val_score
 
-def decisiontest(train, label):
+def decisiontrain(train, label):
+    print("Starting Decision Tree Training Model")
     dt = DecisionTreeClassifier(random_state = 0)
     kf = KFold(n_splits=6, shuffle = True)
     ascore=[]
@@ -34,9 +35,9 @@ def decisiontest(train, label):
     #print("k=",j)
     print("Accuracy:", ascore)
     print("Mean Accuracy: ", sum(ascore)/len(ascore))
-    print("Precision: ",sum(pr)/len(pr))
-    print("Recall:", sum(rc)/len(rc))
-    print("F1 Score: ",sum(f1)/len(f1))
+    #print("Precision: ",sum(pr)/len(pr))
+    #print("Recall:", sum(rc)/len(rc))
+    #print("F1 Score: ",sum(f1)/len(f1))
     #print("---------------------------------------------------------------------------------------------")
     pickle.dump(dt,open('dt_model.sav','wb'))
 
@@ -47,16 +48,15 @@ def decisiontest(train, label):
     #     print("Score=",s.mean())
     #     print("-----------------------------------------------------------------------------------------------------")
 
-def decisiontrain(test_data,test_label):
+def decisiontest(test_data,test_label):
     dt = pickle.load(open('dt_model.sav', 'rb'))
     predictions = dt.predict(test_data)
+    print("\n\n************Decision Tree Output******************")
+    print("\n****************************************************")
     print("Decision Tree Accuracy: ", accuracy_score(test_label,predictions))
     print("Decision Tree precision = ",precision_score(test_label,predictions))
     print("Decision Tree recall = ",recall_score(test_label,predictions))
     print("Decision Tree F1 = ",f1_score(test_label,predictions))
-    print("Decision Tree Confusion Matrix :")
-    print(confusion_matrix(predictions, test_label))
-
 
 def dt_test_one(test_data):
     dt = pickle.load(open('dt_model.sav', 'rb'))
