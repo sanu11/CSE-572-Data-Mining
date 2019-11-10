@@ -76,3 +76,8 @@ def test_neural_network(test_features, test_labels):
     cm = confusion_matrix(test_labels, predictions)
     print("Confusion Matrix [[TT, TF],[FT, FF] ]", cm)
     return predictions
+
+def nn_test_one_sample(test_data):
+    nn_model = load_model('nn_model.h5')
+
+    return nn_model.predict(test_data)

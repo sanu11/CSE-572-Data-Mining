@@ -23,7 +23,7 @@ def feature_matrix_for_pca(concatenatedFile):
   # combined_csv = 'Data/concatenatedData.csv'
   final_file =concatenatedFile
   #Plot all data points
-  dataframe2 = read_csv(data_File, header=0, index_col=False)
+  dataframe2 = read_csv(data_File, header=None, index_col=False)
   dataframe2 = dataframe2.iloc[:,:30]
   # print concatenatedFile
   #Reversing the CGM Series
@@ -42,7 +42,7 @@ def feature_matrix_for_pca(concatenatedFile):
   #combined_date_csv.to_csv(final_date_file, index=False, encoding='utf-8-sig')
   #print("Wrote all time series files to final file")
 
-  dataframe_time = read_csv(final_file, header=0, index_col=False)
+  dataframe_time = read_csv(final_file, header=None, index_col=False)
   dataframe_time = dataframe_time.iloc[:,:31]
   #Reversing the CGM Series
   dataframe_time = dataframe_time.iloc[:,::-1]

@@ -39,7 +39,7 @@ def svm_test(test_features,test_labels):
     # Calculate roc auc
     #roc_value = roc_auc_score(test_labels, predictions)
     # print(roc_value)
-def rf_test_one_sample(test_data):
+def snm_test_one_sample(test_data):
     clf = pickle.load(open('svm_model.sav', 'rb'))
 
     return clf.predict(test_data)

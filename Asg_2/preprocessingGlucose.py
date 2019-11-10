@@ -10,7 +10,7 @@ def preprocess(path):
 		# print fname
 		with open(fname) as csvfile:
 			readCSV = csv.reader(csvfile, delimiter=',')
-			print fname
+			# print fname
 			# n = len(readCSV[0])
 			rows=[]
 			current = 0
