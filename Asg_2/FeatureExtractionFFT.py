@@ -20,11 +20,12 @@ import psd_feature as psd
 #print("Wrote all files to final file")
 def feature_matrix_for_pca(concatenatedFile):
   data_File = concatenatedFile
-  combined_csv = 'Data/concatenatedData.csv'
+  # combined_csv = 'Data/concatenatedData.csv'
   final_file =concatenatedFile
   #Plot all data points
   dataframe2 = read_csv(data_File, header=0, index_col=False)
   dataframe2 = dataframe2.iloc[:,:30]
+  # print concatenatedFile
   #Reversing the CGM Series
   dataframe2 = dataframe2.iloc[:,::-1]
   num_rows = len(dataframe2)
@@ -125,9 +126,10 @@ def feature_matrix_for_pca(concatenatedFile):
   #pyplot.plot(range(0,N), power)
   #print(len(listOfMeans))
   FinalFeatureFrame = pd.concat([peaksFrame,meanFrame,stdFrame,minFrame,maxFrame,diffminmaxFrame,cgmVelocityFrame,psdFrame], axis = 1)
-  #print(FinalFeatureFrame.shape[1])
+  print(FinalFeatureFrame.shape)
 
   #FinalFeatureFrame.to_csv('FeatureMatrix.csv')
+  # print FinalFeatureFrame
   return FinalFeatureFrame
   #np.save('FeatureMatrix.csv',FinalFeatureFrame)
   #X = StandardScaler().fit_transform(FinalFeatureFrame)
