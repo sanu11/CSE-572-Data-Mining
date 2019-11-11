@@ -17,33 +17,39 @@ preprocessed_file = path+'_updated.csv'
 test_data = genfromtxt(preprocessed_file, delimiter=',')
 n = len(test_data)
 
-
 test_data = np.delete(test_data,30,1)
+
+print("length of test data ",n, len(test_data[0]))
 
 
 # get feature matrix
 test_data = feature.feature_matrix_for_pca(preprocessed_file)
 
 # remove labels column
+
+print("test data length after feature matrix ",len(test_data))
 test_data.drop(test_data.columns[1], axis=1,inplace=True)
 
 
 # get pca data
 test_X = 	pcafeature.get_reduced_test_data(test_data)
+
+print("test data length after PCA",len(test_X))
+
 test_Y=[]
 
 
 with open(path) as csvfile:
     readCSV = csv.reader(csvfile, delimiter=',')
     for row in readCSV:
-    	n = len(row)
+        n = len(row)
         test_Y.append(int(row[n-1]))
 
 
 #  here, there is mismatch for test_X and test_Y rows
 
-# print test_Y
-# print test_X
+print(test_Y,test_X)
+
 
 # Test all models
 rf.random_forest_test(test_X, test_Y)
