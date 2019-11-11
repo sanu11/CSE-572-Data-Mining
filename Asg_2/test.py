@@ -36,31 +36,54 @@ def preprocess():
 
 
 def test_neuralNetwork(test_X):
+	nn_labels=[]
 	print("Predicitng result using Neural Network: ")
-	result= nn_model.nn_test_one_sample(test_X)
-	print(result)
-	return result
+
+	for i in range(len(test_X)) : 
+		test_frame = test_X.iloc[i,:].to_frame().transpose()
+		result= nn_model.nn_test_one_sample(test_frame)
+		nn_labels.append(result)
+
+	print(nn_labels)
+	return nn_labels
 
 
 def test_randomForest(test_X):
+	rf_labels=[]
 	print("Predicitng result using Random Forest: ")
-	result= rf.rf_test_one_sample(test_X)
-	print(result)
-	return result
+
+	for i in range(len(test_X)) : 
+		test_frame = test_X.iloc[i,:].to_frame().transpose()
+		result= rf.rf_test_one_sample(test_X)
+		rf_labels.append(result[0])
+
+	print(rf_labels)
+	return rf_labels
 
 
 def test_svm(test_X):
+	svm_labels=[]
 	print("Predicitng result using SVM: ")
-	result= svm.svm_test_one_sample(test_X)
-	print(result)	
-	return result
+
+	for i in range(len(test_X)) : 
+		test_frame = test_X.iloc[i,:].to_frame().transpose()
+		result= svm.svm_test_one_sample(test_frame)
+		svm_labels.append(result[0])
+
+	print(svm_labels)	
+	return svm_labels
 
 
 def test_decisionTree(test_X):
 	print("Predicitng result using Decision Tree: ")
-	result= dt.dt_test_one(test_X)
-	print(result)
-	return result
+	dt_labels=[]
+	for i in range(len(test_X)) : 
+		test_frame = test_X.iloc[i,:].to_frame().transpose()
+		result= dt.dt_test_one(test_X)
+		dt_labels.append(result[0])
+
+	print(dt_labels)
+	return dt_labels
 
 
 # test_Y=[]
@@ -75,11 +98,13 @@ def test_decisionTree(test_X):
 
 # print(test_Y,test_X)
 
+
 test_X = preprocess()
 test_neuralNetwork(test_X)
 test_randomForest(test_X)
 test_svm(test_X)
 test_decisionTree(test_X)
+
 
 
 

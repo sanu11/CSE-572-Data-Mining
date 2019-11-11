@@ -41,9 +41,9 @@ def feature_matrix_for_pca(concatenatedFile):
   dataframe_time = dataframe_time.iloc[:,::-1]
   num_rows = len(dataframe_time)
   num_cols = len(dataframe_time.iloc[0])
-  print("No. of rows in our total time series dataset = ",num_rows)
-  print("No. of cols in our total time series dataset = ",num_cols)
-  print("DataFrame is reversed")
+  # print("No. of rows in our total time series dataset = ",num_rows)
+  # print("No. of cols in our total time series dataset = ",num_cols)
+  # print("DataFrame is reversed")
 
   dataframe2.plot()
   #pyplot.show()
