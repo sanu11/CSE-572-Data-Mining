@@ -13,7 +13,7 @@ Models:
 4. Support Vector Machine
 
 Model Training:
-For training the models, "allmodeltraining.py" needs to be run. We have already trained the models and the models are stored in .sav files which will be used ofr testing on the models.
+For training the models, "allModelTraining.py" needs to be run. We have already trained the models and the models are stored in .sav files which will be used ofr testing on the models.
 
 Testing:
 For testing all the classifier models, test.py needs to be run.
