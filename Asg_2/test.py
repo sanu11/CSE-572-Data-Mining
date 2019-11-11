@@ -5,41 +5,63 @@ import csv
 
 import preprocessingGlucose as pg
 import PCAonFeatureMatrix as pcafeature
-import FeatureExtractionFFT as feature
+import FeatureExtractionFFTForTest as feature
 
 import randomforest as rf
 import deepLearningModel as nn_model
 import decisiontree as dt
 import svm
 
+def preprocess():
+
+	path = sys.argv[1]
+	pg.preprocess(path)
+	preprocessed_file = path+'_updated.csv'
+
+	# get preprocessed data
+	test_data = genfromtxt(preprocessed_file, delimiter=',')
+	n = len(test_data)
+
+	# get feature matrix
+	test_data = feature.feature_matrix_for_pca(preprocessed_file)
+
+	# remove labels column
+	print("test data length after feature matrix ",len(test_data))
+	test_data.drop(test_data.columns[1], axis=1,inplace=True)
+
+	# get pca data
+	test_X = pcafeature.get_reduced_test_data(test_data)
+	print("test data length after PCA",len(test_X))
+	return test_X
 
 
-path = sys.argv[1]
-pg.preprocess(path)
-preprocessed_file = path+'_updated.csv'
-
-# get preprocessed data
-test_data = genfromtxt(preprocessed_file, delimiter=',')
-n = len(test_data)
-
-# test_data = np.delete(test_data,30,1)
-
-# print("length of test data ",n, len(test_data[0]))
+def test_neuralNetwork(test_X):
+	print("Predicitng result using Neural Network: ")
+	result= nn_model.nn_test_one_sample(test_X)
+	print(result)
+	return result
 
 
-# get feature matrix
-test_data = feature.feature_matrix_for_pca(preprocessed_file)
-
-# remove labels column
-
-print("test data length after feature matrix ",len(test_data))
-test_data.drop(test_data.columns[1], axis=1,inplace=True)
+def test_randomForest(test_X):
+	print("Predicitng result using Random Forest: ")
+	result= rf.rf_test_one_sample(test_X)
+	print(result)
+	return result
 
 
-# get pca data
-test_X = pcafeature.get_reduced_test_data(test_data)
+def test_svm(test_X):
+	print("Predicitng result using SVM: ")
+	result= svm.svm_test_one_sample(test_X)
+	print(result)	
+	return result
 
-print("test data length after PCA",len(test_X))
+
+def test_decisionTree(test_X):
+	print("Predicitng result using Decision Tree: ")
+	result= dt.dt_test_one(test_X)
+	print(result)
+	return result
+
 
 # test_Y=[]
 
@@ -53,23 +75,15 @@ print("test data length after PCA",len(test_X))
 
 # print(test_Y,test_X)
 
+test_X = preprocess()
+test_neuralNetwork(test_X)
+test_randomForest(test_X)
+test_svm(test_X)
+test_decisionTree(test_X)
 
-#predict neural network
-print("Predicitng result using Neural Network\n")
-result= nn_model.nn_test_one_sample(test_X)
-print(result)
 
-#predict random forest
-print("Predicitng result using Random Forest\n")
-result= rf.rf_test_one_sample(test_X)
-print(result)
 
-#predict svm
-print("Predicitng result using SVM\n")
-result= svm.svm_test_one_sample(test_X)
-print(result)
 
-#predict DT
-print("Predicitng result using Decision Tree\n")
-result= dt.dt_test_one(test_X)
-print(result)
+
+
+

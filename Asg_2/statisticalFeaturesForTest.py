@@ -154,7 +154,7 @@ def plotfeatures(feature_matrix, subtitle, fname):
 
 
 def getStatisticalFeatures(file_name):
-    dataframe = read_csv(file_name, header=0, index_col=False)
+    dataframe = read_csv(file_name, header=None, index_col=False)
 
     dataframe = dataframe.iloc[:,:31]
     # print(dataframe)

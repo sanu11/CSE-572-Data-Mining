@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.decomposition import PCA
 import pandas as pd
 from scipy.fftpack import fft, ifft
-import statisticalFeatures as statf
+import statisticalFeaturesForTest as statf
 import cgmvel as cgm
 import psd_feature as psd
 # load dataset
@@ -23,7 +23,7 @@ def feature_matrix_for_pca(concatenatedFile):
   # combined_csv = 'Data/concatenatedData.csv'
   final_file =concatenatedFile
   #Plot all data points
-  dataframe2 = read_csv(data_File, header=0, index_col=False)
+  dataframe2 = read_csv(data_File, header=None, index_col=False)
   dataframe2 = dataframe2.iloc[:,:30]
   # print concatenatedFile
   #Reversing the CGM Series
@@ -35,7 +35,7 @@ def feature_matrix_for_pca(concatenatedFile):
   # print("DataFrame is reversed")
 
 
-  dataframe_time = read_csv(final_file, header=0, index_col=False)
+  dataframe_time = read_csv(final_file, header=None, index_col=False)
   dataframe_time = dataframe_time.iloc[:,:31]
   #Reversing the CGM Series
   dataframe_time = dataframe_time.iloc[:,::-1]

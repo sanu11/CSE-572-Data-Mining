@@ -33,7 +33,7 @@ def decisiontrain(train, label):
         rc.append(recall_score(predictions, test_l))
         f1.append(f1_score(predictions, test_l))
     #print("k=",j)
-    print("Accuracy:", ascore)
+    print("Accuracy:", ascore) 
     print("Mean Accuracy: ", sum(ascore)/len(ascore))
     #print("Precision: ",sum(pr)/len(pr))
     #print("Recall:", sum(rc)/len(rc))
