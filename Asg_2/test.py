@@ -54,19 +54,22 @@ print("test data length after PCA",len(test_X))
 # print(test_Y,test_X)
 
 
-#predict SVM
+#predict neural network
 print("Predicitng result using Neural Network\n")
 result= nn_model.nn_test_one_sample(test_X)
 print(result)
 
+#predict random forest
 print("Predicitng result using Random Forest\n")
 result= rf.rf_test_one_sample(test_X)
 print(result)
 
+#predict svm
 print("Predicitng result using SVM\n")
 result= svm.svm_test_one_sample(test_X)
 print(result)
 
+#predict DT
 print("Predicitng result using Decision Tree\n")
 result= dt.dt_test_one(test_X)
 print(result)
