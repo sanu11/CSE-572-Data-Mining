@@ -91,7 +91,7 @@ def get_feature_matrix_Final(filename):
     final_matrix_for_models.to_csv('final_matrix_for_models.csv')
     x_train ,x_test = train_test_split(final_matrix_for_models,test_size=0.2)       #test_size=0.5(whole_data)
 
-    return x_train.iloc[:,0:5],x_train.iloc[:,5],x_test.iloc[:,0:5],x_test.iloc[:,5]
+    return final_matrix_for_models.iloc[:,0:5],final_matrix_for_models.iloc[:,5],x_test.iloc[:,0:5],x_test.iloc[:,5]
 
 def get_reduced_test_data(test_data):
 
