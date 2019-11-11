@@ -154,22 +154,22 @@ def plotfeatures(feature_matrix, subtitle, fname):
 
 
 def getStatisticalFeatures(file_name):
-    dataframe = read_csv(file_name, header=0, index_col=False)
+    dataframe = read_csv(file_name, header=None, index_col=False)
 
     dataframe = dataframe.iloc[:,:31]
-    print(dataframe)
+    # print(dataframe)
     window_size = 9
     window_slide = 6
 
     mean_matrix = calculateWindowedMean(dataframe, window_size, window_slide)
-    print("rows",len(mean_matrix))
-    print("cols", len(mean_matrix[0]))
-    print("mean matrix ",mean_matrix)
+    # print("rows",len(mean_matrix))
+    # print("cols", len(mean_matrix[0]))
+    # print("mean matrix ",mean_matrix)
     std_matrix = calculateWindowedstd(dataframe, window_size, window_slide)
-    print("std_matrix ", std_matrix)
+    # print("std_matrix ", std_matrix)
     min_matrix, max_matrix, diff_minmax = calculateWindowedMinMax(dataframe, window_size, window_slide)
-    print("min_matrix ", min_matrix)
-    print("max_matrix ", max_matrix)
+    # print("min_matrix ", min_matrix)
+    # print("max_matrix ", max_matrix)
 
     # plotfeatures(mean_matrix, "Mean of of sliding windows (window size=9)","stat_fig1")
     # plotfeatures(std_matrix, "Std Deviation of sliding windows (window size=9)","stat_fig2")

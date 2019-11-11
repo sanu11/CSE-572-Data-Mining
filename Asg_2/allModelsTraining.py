@@ -16,20 +16,20 @@ test_X, test_Y,train_X,train_Y = pcafeature.get_feature_matrix_Final('Data/conca
 # print(train_X.iloc[0], train_Y.iloc[0])
 # print test_X,test_Y
 rf.random_forest_train(train_X,train_Y)
-rf.random_forest_test(test_X, test_Y)
+# rf.random_forest_test(test_X, test_Y)
 
 #accuracy, precision, recall, F1score calculation for Neural Network
 # print("Length of training Set ", len(train_X),len(train_X[0]))
 nn_model.train_neural_network(train_X,train_Y)
-nn_model.test_neural_network(test_X, test_Y)
+# nn_model.test_neural_network(test_X, test_Y)
 
 dt.decisiontrain(train_X,train_Y)
-dt.decisiontest(test_X, test_Y)
+# dt.decisiontest(test_X, test_Y)
 
 
 #accuracy, precision, recall, F1score calculation for Decision Tree -- ENTER HERE
 svm.svm_train(train_X,train_Y)
-svm.svm_test(test_X,test_Y)
+# svm.svm_test(test_X,test_Y)
 
 #accuracy, precision, recall, F1score calculation for SVM -- ENTER HERE
 

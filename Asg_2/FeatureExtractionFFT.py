@@ -30,17 +30,10 @@ def feature_matrix_for_pca(concatenatedFile):
   dataframe2 = dataframe2.iloc[:,::-1]
   num_rows = len(dataframe2)
   num_cols = len(dataframe2.iloc[0])
-  print("No. of rows in our total dataset = ",num_rows)
-  print("No. of cols in our total dataset = ",num_cols)
-  print("DataFrame is reversed")
+  # print("No. of rows in our total dataset = ",num_rows)
+  # print("No. of cols in our total dataset = ",num_cols)
+  # print("DataFrame is reversed")
 
-  #Combine Time Series also
-  #all_datefilenames = ['Datasets/CGMDatenumLunchPat1.csv_updated.csv','Datasets/CGMDatenumLunchPat2.csv_updated.csv','Datasets/CGMDatenumLunchPat3.csv_updated.csv','Datasets/CGMDatenumLunchPat4.csv_updated.csv','Datasets/CGMDatenumLunchPat5.csv_updated.csv']
-  #final_date_file = 'Datasets/CGMDatenum_CombinedFile.csv'
-  #combined_date_csv = pd.concat([pd.read_csv(f) for f in all_datefilenames],sort=False)
-  #print("Combined all time series files\n")
-  #combined_date_csv.to_csv(final_date_file, index=False, encoding='utf-8-sig')
-  #print("Wrote all time series files to final file")
 
   dataframe_time = read_csv(final_file, header=None, index_col=False)
   dataframe_time = dataframe_time.iloc[:,:31]
@@ -59,7 +52,6 @@ def feature_matrix_for_pca(concatenatedFile):
   power =[]
   peaks = []
   rms=[]
-  #print("length of dataframe")
   for i in range(0,len(dataframe2)):
 
     list=dataframe2.iloc[i,0:31]
@@ -72,7 +64,6 @@ def feature_matrix_for_pca(concatenatedFile):
 
     xf = np.linspace(0.0, 1.0/(2.0*T), N/2)
     sorted(yf,reverse=True)
-
     #print("now fft")
 
     freq1_ps = np.abs(yf)**2
@@ -86,33 +77,12 @@ def feature_matrix_for_pca(concatenatedFile):
 
   powerFrame = pd.DataFrame.from_dict(power)
   peaksFrame = pd.DataFrame.from_dict(peaks)
-  # pyplot.xlabel('Data')
-  # pyplot.ylabel('FFT Peak1')
-  # pyplot.scatter(range(0,N),(np.array(peaks))[:,0])
-  # pyplot.savefig('Plots/Plots_fft/PCA_fft_peak1')
-  # pyplot.show()
-  #
-  # pyplot.xlabel('Data')
-  # pyplot.ylabel('FFT Peak2')
-  # pyplot.scatter(range(0,N),(np.array(peaks))[:,1])
-  # pyplot.savefig('Plots/Plots_fft/PCA_fft_peak2')
-  # pyplot.show()
-  #
-  # pyplot.xlabel('Data')
-  # pyplot.ylabel('FFT Peak3')
-  # pyplot.scatter(range(0,N),(np.array(peaks))[:,2])
-  # pyplot.savefig('Plots/Plots_fft/PCA_fft_peak3')
-  # pyplot.show()
-  #
-  # pyplot.xlabel('Data')
-  # pyplot.ylabel('FFT Peak4')
-  # pyplot.scatter(range(0,N),(np.array(peaks))[:,3])
-  # pyplot.savefig('Plots/Plots_fft/PCA_fft_peak4')
-  # pyplot.show()
+
 
 
   #get statistical features
   mean_matrix,std_matrix,min_matrix,max_matrix,diff_minmax = statf.getStatisticalFeatures(final_file)
+
   meanFrame = pd.DataFrame.from_dict(mean_matrix)
   stdFrame = pd.DataFrame.from_dict(std_matrix)
   minFrame = pd.DataFrame.from_dict(min_matrix)
@@ -122,11 +92,10 @@ def feature_matrix_for_pca(concatenatedFile):
   #get cgm veocity peaks
   cgmVelocityFrame = cgm.velocity(dataframe2,dataframe_time)
   psdFrame = psd.psd(dataframe2)
-  #print(psdFrame)
-  #pyplot.plot(range(0,N), power)
-  #print(len(listOfMeans))
+
+
   FinalFeatureFrame = pd.concat([peaksFrame,meanFrame,stdFrame,minFrame,maxFrame,diffminmaxFrame,cgmVelocityFrame,psdFrame], axis = 1)
-  print(FinalFeatureFrame.shape)
+  # print(FinalFeatureFrame.shape)
 
   #FinalFeatureFrame.to_csv('FeatureMatrix.csv')
   # print FinalFeatureFrame

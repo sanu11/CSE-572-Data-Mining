@@ -44,8 +44,8 @@ def train_neural_network(train_features,train_labels):
     kfold_accuracies = []
     kf = KFold(n_splits=4, shuffle=True, random_state=42)
     for train_index, test_index in kf.split(train_features):
-        print("Train Index: ", train_index, "\n")
-        print("Test Index: ", test_index)
+        # print("Train Index: ", train_index, "\n")
+        # print("Test Index: ", test_index)
         X_train, X_test = train_features.iloc[train_index], train_features.iloc[test_index]
         Y_train, Y_test = train_labels.iloc[train_index], train_labels.iloc[test_index]
         nn_model.fit(X_train,Y_train, epochs=eps , batch_size=batch)

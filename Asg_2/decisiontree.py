@@ -61,7 +61,7 @@ def decisiontest(test_data,test_label):
 def dt_test_one(test_data):
     dt = pickle.load(open('dt_model.sav', 'rb'))
     predictions = dt.predict(test_data)
-    print("Predicted class:", predictions)
+    # print("Predicted class:", predictions)
     return predictions
 
 #data = pcafeature.get_feature_matrix_Final('Asg_2/Data/concatenatedData.csv')
