@@ -20,5 +20,6 @@ The models can be trained:
 Testing:
 For testing all the classifier models, test.py needs to be run:
       python test.py sampletest.csv
-Model training is done with 64 bit python, so if 32 bit python is used for testing, the model needs to be trained before testing.
+sampletest.csv is the input file containg one or multiple rows of test data point for tesing. The result will be an array of outputs for each test data.
+Note: Model training is done with 64 bit python, so if 32 bit python is used for testing, the model needs to be trained before testing.
 
