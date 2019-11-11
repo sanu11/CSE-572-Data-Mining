@@ -13,7 +13,7 @@ Models:
 4. Support Vector Machine
 
 Model Training:
-For training the models, "allModelTraining.py" needs to be run. We have already trained the models and the models are stored in .sav files which will be used ofr testing on the models.
+For training the models, "allModelTraining.py" needs to be run. We have already trained the models and the models are stored in .sav files which will be used for testing on the models.
 The models can be trained:
     python allModelTraining.py
 
@@ -21,6 +21,5 @@ Testing:
 For testing all the classifier models, test.py needs to be run:
       python test.py sampletest.csv
       <br>
-sampletest.csv is the input file containg one or multiple rows of test data point for tesing. The result will be an array of outputs for each test data.
+sampletest.csv is the input file containing one or multiple rows of test data points for tesing. The result will be an array of predicted labels (0/1) for each test data.
 Note: Model training is done with 64 bit python, so if 32 bit python is used for testing, the model needs to be trained before testing.
-
