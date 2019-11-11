@@ -81,4 +81,7 @@ def nn_test_one_sample(test_data):
     nn_model = load_model('nn_model.h5')
     prediction = nn_model.predict(test_data)
     prediction = (prediction > 0.5)
-    return prediction
+    if prediction:
+        return 1
+    else:
+        return 0
