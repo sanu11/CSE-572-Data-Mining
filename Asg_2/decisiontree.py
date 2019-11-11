@@ -33,8 +33,10 @@ def decisiontrain(train, label):
         rc.append(recall_score(predictions, test_l))
         f1.append(f1_score(predictions, test_l))
     #print("k=",j)
-    print("Accuracy:", ascore) 
-    print("Mean Accuracy: ", sum(ascore)/len(ascore))
+    print("\n\n************Decision Tree Output******************")
+    print("\n****************************************************")
+    print("Accuracy K fold:", ascore)
+    print("Decision Tree Mean Accuracy(K fold): ", sum(ascore)/len(ascore))
     #print("Precision: ",sum(pr)/len(pr))
     #print("Recall:", sum(rc)/len(rc))
     #print("F1 Score: ",sum(f1)/len(f1))
@@ -51,12 +53,13 @@ def decisiontrain(train, label):
 def decisiontest(test_data,test_label):
     dt = pickle.load(open('dt_model.sav', 'rb'))
     predictions = dt.predict(test_data)
-    print("\n\n************Decision Tree Output******************")
-    print("\n****************************************************")
+    print("\n**************Test Accuracy****************")
+
     print("Decision Tree Accuracy: ", accuracy_score(test_label,predictions))
     print("Decision Tree precision = ",precision_score(test_label,predictions))
     print("Decision Tree recall = ",recall_score(test_label,predictions))
     print("Decision Tree F1 = ",f1_score(test_label,predictions))
+    print("\n")
 
 def dt_test_one(test_data):
     dt = pickle.load(open('dt_model.sav', 'rb'))

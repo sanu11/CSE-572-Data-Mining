@@ -55,9 +55,11 @@ def train_neural_network(train_features,train_labels):
     # accuracy = cross_val_score(estimator=nn_model, X=train_features, y=train_labels, cv=10, n_jobs=-1)
     # loss, accuracy = nn_model.evaluate(train_features, train_labels)
     # print("Accuracy: ", accuracy," Loss",loss)
+    print("\n\n***********Neural Network Output******************")
+    print("\n**************************************************")
     print("Accuracies: ",kfold_accuracies)
-    print("Mean Accuracy: ", sum(kfold_accuracies)/len(kfold_accuracies))
-
+    print("Neural Network Mean Accuracy(K fold): ", sum(kfold_accuracies)/len(kfold_accuracies))
+    print("\n")
     nn_model.save('nn_model.h5')
 
 
@@ -65,8 +67,8 @@ def test_neural_network(test_features, test_labels):
     nn_model = load_model('nn_model.h5')
     predictions = nn_model.predict_classes(test_features)
     predictions = (predictions > 0.5)
-    print("\n\n***********Neural Network Output******************")
-    print("\n**************************************************")
+    print("\n**************Test Accuracy****************")
+
     print("Neural Network accuracy for test Data =  ", accuracy_score(test_labels, predictions))
     print("Neural Network precision for test Data =  ", precision_score(test_labels, predictions))
     print("Neural Network recall for test Data =  ", recall_score(test_labels, predictions))

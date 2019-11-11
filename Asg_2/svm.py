@@ -19,9 +19,10 @@ def svm_train(train_features,train_labels):
     clf.fit(train_features,train_labels)
     kfold_accuracies=[]
     kfold_accuracies = cross_val_score(clf, train_features, train_labels, cv=4)
-    
+    print("\n\n*********** SVM Output******************")
+    print("\n**************************************************")
     print("Accuracies K Fold: ",kfold_accuracies)
-    print("Mean Accuracy: ", sum(kfold_accuracies)/len(kfold_accuracies))
+    print("SVM Mean Accuracy(K fold): ", sum(kfold_accuracies)/len(kfold_accuracies))
     pickle.dump(clf,open('svm_model.sav','wb'))
     # Use the forest's predict method on the test data
 
@@ -29,12 +30,15 @@ def svm_test(test_features,test_labels):
     rf = pickle.load(open('svm_model.sav', 'rb'))
 
     predictions = rf.predict(test_features)
-    print("\n\n*********** SVM Output******************")
-    print("\n**************************************************")
+
+    print("\n**************Test Accuracy****************")
+
     print("SVM accuracy = ",accuracy_score(test_labels,predictions))
     print("SVM precision = ",precision_score(test_labels,predictions))
     print("SVM recall = ",recall_score(test_labels,predictions))
     print("SVM F1 = ",f1_score(test_labels,predictions))
+    print("\n")
+
 
     # Calculate roc auc
     #roc_value = roc_auc_score(test_labels, predictions)
