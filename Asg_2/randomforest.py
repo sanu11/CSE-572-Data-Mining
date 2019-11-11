@@ -25,7 +25,6 @@ def random_forest_train(train_features,train_labels):
         rf.fit(X_train,Y_train)
         kfold_accuracies.append(accuracy_score(rf.predict(X_test), Y_test))
     print("\n\n***********Random Forest Output******************")
-    print("\n**************************************************")
     print("Random Forest Accuracies K Fold: ",kfold_accuracies)
     print("Random Forest Mean Accuracy(K fold): ", sum(kfold_accuracies)/len(kfold_accuracies))
     pickle.dump(rf,open('rf_model.sav','wb'))
@@ -35,7 +34,7 @@ def random_forest_test(test_features,test_labels):
     rf = pickle.load(open('rf_model.sav', 'rb'))
 
     predictions = rf.predict(test_features)
-    print("\n**************Test Accuracy****************")
+    print("**************Test Accuracy****************")
 
     print("Random Forest accuracy = ",accuracy_score(test_labels,predictions))
     print("Random Forest precision = ",precision_score(test_labels,predictions))

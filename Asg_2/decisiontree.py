@@ -34,7 +34,6 @@ def decisiontrain(train, label):
         f1.append(f1_score(predictions, test_l))
     #print("k=",j)
     print("\n\n************Decision Tree Output******************")
-    print("\n****************************************************")
     print("Accuracy K fold:", ascore)
     print("Decision Tree Mean Accuracy(K fold): ", sum(ascore)/len(ascore))
     #print("Precision: ",sum(pr)/len(pr))
@@ -53,7 +52,7 @@ def decisiontrain(train, label):
 def decisiontest(test_data,test_label):
     dt = pickle.load(open('dt_model.sav', 'rb'))
     predictions = dt.predict(test_data)
-    print("\n**************Test Accuracy****************")
+    print("**************Test Accuracy****************")
 
     print("Decision Tree Accuracy: ", accuracy_score(test_label,predictions))
     print("Decision Tree precision = ",precision_score(test_label,predictions))

@@ -20,7 +20,6 @@ def svm_train(train_features,train_labels):
     kfold_accuracies=[]
     kfold_accuracies = cross_val_score(clf, train_features, train_labels, cv=4)
     print("\n\n*********** SVM Output******************")
-    print("\n**************************************************")
     print("Accuracies K Fold: ",kfold_accuracies)
     print("SVM Mean Accuracy(K fold): ", sum(kfold_accuracies)/len(kfold_accuracies))
     pickle.dump(clf,open('svm_model.sav','wb'))
@@ -31,7 +30,7 @@ def svm_test(test_features,test_labels):
 
     predictions = rf.predict(test_features)
 
-    print("\n**************Test Accuracy****************")
+    print("**************Test Accuracy****************")
 
     print("SVM accuracy = ",accuracy_score(test_labels,predictions))
     print("SVM precision = ",precision_score(test_labels,predictions))

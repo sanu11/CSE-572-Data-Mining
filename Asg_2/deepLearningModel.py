@@ -56,10 +56,8 @@ def train_neural_network(train_features,train_labels):
     # loss, accuracy = nn_model.evaluate(train_features, train_labels)
     # print("Accuracy: ", accuracy," Loss",loss)
     print("\n\n***********Neural Network Output******************")
-    print("\n**************************************************")
     print("Accuracies: ",kfold_accuracies)
     print("Neural Network Mean Accuracy(K fold): ", sum(kfold_accuracies)/len(kfold_accuracies))
-    print("\n")
     nn_model.save('nn_model.h5')
 
 
@@ -67,7 +65,7 @@ def test_neural_network(test_features, test_labels):
     nn_model = load_model('nn_model.h5')
     predictions = nn_model.predict_classes(test_features)
     predictions = (predictions > 0.5)
-    print("\n**************Test Accuracy****************")
+    print("**************Test Accuracy****************")
 
     print("Neural Network accuracy for test Data =  ", accuracy_score(test_labels, predictions))
     print("Neural Network precision for test Data =  ", precision_score(test_labels, predictions))
@@ -77,6 +75,8 @@ def test_neural_network(test_features, test_labels):
     # Confusion Matrix
     cm = confusion_matrix(test_labels, predictions)
     print("Confusion Matrix [[TT, TF],[FT, FF] ]", cm)
+    print("\n")
+
     return predictions
 
 def nn_test_one_sample(test_data):
